@@ -52,12 +52,14 @@ const BouncingBall = ({ radius, colors, positions }) => {
   );
 };
 
+
 // This is the main component
 const BouncingAndRotatingPuzzlePiece = ({
   width,
   height,
   borderColors,
   strokeWidth,
+  padding
 }) => {
   const radius = Math.min(width, height) / 2;
   
@@ -116,9 +118,11 @@ const BouncingAndRotatingPuzzlePiece = ({
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={height}
+      padding={padding}
       viewBox={`-${width / 2} -${height / 2} ${width} ${height}`}
-      className='container'
+      className='container1'
     >
+
       <defs>
         <linearGradient id="puzzleStrokeGradient" x1="0%" y1="0%">
           {borderColors.map((color, index) => (
@@ -203,3 +207,4 @@ const BouncingAndRotatingPuzzlePiece = ({
 };
 
 export default BouncingAndRotatingPuzzlePiece;
+
