@@ -1,8 +1,6 @@
-//this is to import required dependencies
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
-// Subcomponent: BouncingBall
 const BouncingBall = ({ radius, colors, positions }) => {
   const ballRef = useRef(null);
 
@@ -13,29 +11,29 @@ const BouncingBall = ({ radius, colors, positions }) => {
     animation.to(ball, {
       x: positions[1].x,
       y: positions[1].y,
-      duration: 2, // Adjust the duration as needed
+      duration: 2,
     });
 
     animation.to(ball, {
       x: positions[0].x,
       y: positions[0].y,
-      duration: 2, // Adjust the duration as needed
+      duration: 2,
     });
 
     animation.to(ball, {
       x: positions[3].x,
       y: positions[3].y,
-      duration: 2, // Adjust the duration as needed
+      duration: 2,
     });
 
     animation.to(ball, {
       x: positions[2].x,
       y: positions[2].y,
-      duration: 2, // Adjust the duration as needed
+      duration: 2,
     });
 
     return () => {
-      animation.kill(); // Clean up the animation on unmount
+      animation.kill();
     };
   }, [positions]);
 
@@ -46,18 +44,17 @@ const BouncingBall = ({ radius, colors, positions }) => {
         cx={0}
         cy={0}
         r={radius}
-        fill={`url(#ballGradient)`}
+        fill={colors[0]} // Use the first color from the array
+        stroke={colors[0]} // Set the stroke color
+        strokeWidth={2} // Set the stroke width as needed
       />
     </g>
   );
 };
 
-
-// This is the main component
 const BouncingAndRotatingPuzzlePiece = ({
   width,
   height,
-  borderColors,
   strokeWidth,
   padding
 }) => {
@@ -109,7 +106,7 @@ const BouncingAndRotatingPuzzlePiece = ({
     animation.add(sequence);
 
     return () => {
-      animation.kill(); // Clean up the animation on unmount
+      animation.kill();
     };
   }, [radius]);
 
@@ -122,84 +119,66 @@ const BouncingAndRotatingPuzzlePiece = ({
       viewBox={`-${width / 2} -${height / 2} ${width} ${height}`}
       className='container1'
     >
-
       <defs>
         <linearGradient id="puzzleStrokeGradient" x1="0%" y1="0%">
-          {borderColors.map((color, index) => (
-            <stop
-              key={index}
-              offset={`${(index / borderColors.length) * 100}%`}
-              style={{ stopColor: color, stopOpacity: 1 }}
-            />
-          ))}
+          <stop offset="0%" style={{ stopColor: 'rgb(72, 131, 131)' }} />
+          <stop offset="25%" style={{ stopColor: 'rgb(30, 76, 114)' }} />
+          <stop offset="50%" style={{ stopColor: 'rgb(72, 131, 131)' }} />
+          <stop offset="75%" style={{ stopColor: 'rgb(30, 76, 114)' }} />
         </linearGradient>
         <linearGradient id="ballGradient" x1="0%" y1="0%">
-  {/* Define your gradient stops for the ball here using degrees */}
-  <stop offset="25%" style={{ stopColor: 'rgb(223, 222, 222)'}} />
-  <stop offset="50%" style={{ stopColor: 'rgb(223, 222, 222)'}} />
-  <stop offset="75%" style={{ stopColor: 'rgb(223, 222, 222)'}} />
-  <stop offset="100%" style={{ stopColor: 'rgb(223, 222, 222)' }} />
-</linearGradient>
-
+          <stop offset="25%" style={{ stopColor: 'rgb(223, 222, 222)' }} />
+          <stop offset="50%" style={{ stopColor: 'rgb(223, 222, 222)' }} />
+          <stop offset="75%" style={{ stopColor: 'rgb(223, 222, 222)' }} />
+          <stop offset="100%" style={{ stopColor: 'rgb(223, 222, 222)' }} />
+        </linearGradient>
       </defs>
 
-      {/* Circular Puzzle Piece Made of Four Circular Pieces */}
       <g className="topLeftPiece">
-        
-        {/* Add the top-left piece SVG path here */}
         <path
           d={`
           M 0 -${radius} A ${radius} ${radius} 0 0 0 -${radius} 0 L 0 0 Z
           `}
           fill="transparent"
-          stroke={`url(#puzzleStrokeGradient)`}
+          stroke="rgb(72, 131, 131)"
           strokeWidth={strokeWidth}
         />
       </g>
       <g className="bottomRightPiece">
-        
-        
-        {/* Add the bottom-right piece SVG path here */}
         <path
           d={`
           M 0 ${radius} A ${radius} ${radius} 0 0 0 ${radius} 0 L 0 0 Z
           `}
           fill="transparent"
-          stroke={`url(#puzzleStrokeGradient)`}
+       
+          stroke="rgb(72, 131, 131)" // Set the stroke color here
           strokeWidth={strokeWidth}
         />
       </g>
-      <g>
-
-
-        {/* Add the top-right piece SVG path here */}
+      <g className="topRightPiece">
         <path
           d={`
           M 0 -${radius} A ${radius} ${radius} 0 0 1 ${radius} 0 L 0 0 Z
           `}
           fill="transparent"
-          stroke={`url(#puzzleStrokeGradient)`}
+          stroke="rgb(30, 76, 114)" 
           strokeWidth={strokeWidth}
         />
       </g>
-      <g>
-
-
-        {/* Add the bottom-left piece SVG path here */}
+      <g className="bottomLeftPiece">
         <path
           d={`
           M 0 ${radius} A ${radius} ${radius} 0 0 1 -${radius} 0 L 0 0 Z
           `}
           fill="transparent"
-          stroke={`url(#puzzleStrokeGradient)`}
+          stroke="rgb(30, 76, 114)" 
           strokeWidth={strokeWidth}
         />
       </g>
 
-      {/* Render the BouncingBall component within the puzzle */}
       <BouncingBall
-        radius={radius / 4} // Adjust the radius as needed
-        positions={positions} // Pass the positions of coiled areas
+        radius={radius / 4}
+        positions={positions}
         colors={['grey', 'grey', 'grey']} // Define gradient colors for the ball
       />
     </svg>
@@ -207,4 +186,3 @@ const BouncingAndRotatingPuzzlePiece = ({
 };
 
 export default BouncingAndRotatingPuzzlePiece;
-
