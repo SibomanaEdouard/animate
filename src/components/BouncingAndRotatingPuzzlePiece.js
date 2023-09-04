@@ -130,6 +130,7 @@ const BouncingAndRotatingPuzzlePiece = ({
           <stop offset="50%" style={{ stopColor: 'rgb(72, 131, 131)' }} />
           <stop offset="75%" style={{ stopColor: 'rgb(30, 76, 114)' }} />
         </linearGradient>
+        
         <linearGradient id="ballGradient" x1="0%" y1="0%">
           <stop offset="25%" style={{ stopColor: 'beige' }} />
           <stop offset="50%" style={{ stopColor: 'beige' }} />
@@ -144,7 +145,7 @@ const BouncingAndRotatingPuzzlePiece = ({
           M 0 -${radius} A ${radius} ${radius} 0 0 0 -${radius} 0 L 0 0 Z
           `}
           fill="transparent"
-          stroke="rgb(72, 131, 131)"
+          stroke="rgb(65, 182, 143)"
           strokeWidth={strokeWidth}
         />
       </g>
@@ -155,7 +156,7 @@ const BouncingAndRotatingPuzzlePiece = ({
           `}
           fill="transparent"
        
-          stroke="rgb(72, 131, 131)" // Set the stroke color here
+          stroke="rgb(65, 182, 143)" // Set the stroke color here
           strokeWidth={strokeWidth}
         />
       </g>

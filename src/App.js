@@ -7,10 +7,10 @@ function App() {
     <div className="App container">
       <div className="puzzle-container">
         <BouncingAndRotatingPuzzlePiece
-          width={200} // Adjust the width as needed
-          height={200} // Adjust the height as needed
+          width={180} // Adjust the width as needed
+          height={180} // Adjust the height as needed
           strokeWidth={10} 
-          padding={10}
+          padding={5}
         />
       </div>
     </div>
