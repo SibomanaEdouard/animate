@@ -9,13 +9,8 @@ function App() {
         <BouncingAndRotatingPuzzlePiece
           width={200} // Adjust the width as needed
           height={200} // Adjust the height as needed
-          // borderColors={[
-          //   'rgb(72, 131, 131)',  
-          //   'rgb(30, 76, 114)',    
-          //   'rgb(72, 131, 131)',   
-          //   'rgb(30, 76, 114)'     
-          // ]}
           strokeWidth={10} 
+          padding={10}
         />
       </div>
     </div>

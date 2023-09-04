@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
+
+// this is subcomponent
 const BouncingBall = ({ radius, colors, positions }) => {
   const ballRef = useRef(null);
 
@@ -11,7 +13,7 @@ const BouncingBall = ({ radius, colors, positions }) => {
     animation.to(ball, {
       x: positions[1].x,
       y: positions[1].y,
-      duration: 2,
+      duration: 1,
     });
 
     animation.to(ball, {
@@ -44,14 +46,16 @@ const BouncingBall = ({ radius, colors, positions }) => {
         cx={0}
         cy={0}
         r={radius}
-        fill={colors[0]} // Use the first color from the array
+        fill='beige' // Use the first color from the array
         stroke={colors[0]} // Set the stroke color
-        strokeWidth={2} // Set the stroke width as needed
+        strokeWidth={12} // Set the stroke width as needed
       />
     </g>
   );
 };
 
+
+//this is the main component
 const BouncingAndRotatingPuzzlePiece = ({
   width,
   height,
@@ -111,14 +115,14 @@ const BouncingAndRotatingPuzzlePiece = ({
   }, [radius]);
 
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={width}
-      height={height}
-      padding={padding}
-      viewBox={`-${width / 2} -${height / 2} ${width} ${height}`}
-      className='container1'
-    >
+   <svg
+   xmlns="http://www.w3.org/2000/svg"
+  width={width}
+   height={height}
+   padding={padding}
+  viewBox={`-${width / 2 - padding} -${height / 2 - padding} ${width + 2 * padding} ${height + 2 * padding}`}
+  className='container1'
+ >  
       <defs>
         <linearGradient id="puzzleStrokeGradient" x1="0%" y1="0%">
           <stop offset="0%" style={{ stopColor: 'rgb(72, 131, 131)' }} />
@@ -127,10 +131,10 @@ const BouncingAndRotatingPuzzlePiece = ({
           <stop offset="75%" style={{ stopColor: 'rgb(30, 76, 114)' }} />
         </linearGradient>
         <linearGradient id="ballGradient" x1="0%" y1="0%">
-          <stop offset="25%" style={{ stopColor: 'rgb(223, 222, 222)' }} />
-          <stop offset="50%" style={{ stopColor: 'rgb(223, 222, 222)' }} />
-          <stop offset="75%" style={{ stopColor: 'rgb(223, 222, 222)' }} />
-          <stop offset="100%" style={{ stopColor: 'rgb(223, 222, 222)' }} />
+          <stop offset="25%" style={{ stopColor: 'beige' }} />
+          <stop offset="50%" style={{ stopColor: 'beige' }} />
+          <stop offset="75%" style={{ stopColor: 'beige' }} />
+          <stop offset="100%" style={{ stopColor: 'beige' }} />
         </linearGradient>
       </defs>
 
@@ -177,7 +181,7 @@ const BouncingAndRotatingPuzzlePiece = ({
       </g>
 
       <BouncingBall
-        radius={radius / 4}
+        radius={radius / 8}
         positions={positions}
         colors={['grey', 'grey', 'grey']} // Define gradient colors for the ball
       />
