@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import React from 'react';
+import BouncingAndRotatingPuzzlePiece from './components/BouncingAndRotatingPuzzlePiece'; // Update the import path
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App container">
+      <div className="puzzle-container">
+        <BouncingAndRotatingPuzzlePiece
+          width={150} // Adjust the width as needed
+          height={150} // Adjust the height as needed
+          borderColors={['rgb(72, 131, 131)', 'rgb(30, 76, 114)', 'rgb(72, 131, 131)', 'rgb(30, 76, 114)']} // Adjust border colors as needed
+          strokeWidth={10} // Adjust the stroke width as needed
+        />
+      </div>
     </div>
   );
 }
 
 export default App;
+
+
+
+
+
+
+
